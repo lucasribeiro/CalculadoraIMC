@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">DicasTP01</string>
+    <string name="nome">Nome</string>
+    <string name="adulto_lbl">Adulto</string>
+    <string name="idoso_lbl">Idoso</string>
+    <string name="btn_enviar_lbl">Enviar</string>
+    <string name="peso">Peso em KG</string>
+    <string name="altura">Altura em cm</string>
+    <string name="classificacao">CLASSIFICAÇÂO</string>
+    <string name="ndice_de_massa_corporal">ÍNDICE DE MASSA CORPORAL</string>
+    <string name="resultado">Resultado</string>
+</resources>

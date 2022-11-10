@@ -12,27 +12,65 @@ import java.text.DecimalFormat
 class Resultado : AppCompatActivity() {
 
     lateinit var binding: ActivityResultadoBinding
+    var classificacao_aux = ""
+    var valor_imc = ""
+    var cor = 0
+    var classificacao = ""
+    var peso = 0.0
+    var altura = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityResultadoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        calcularIMC()
+        inicializarVariaveis()
+
+        popularTela()
     }
 
-    private fun calcularIMC() {
-        val peso = intent.getDoubleExtra(PESO, 0.00)
-        val altura = intent.getDoubleExtra(ALTURA,0.00)
-        val classificacao = intent.getStringExtra(CLASSIFICACAO)
+    private fun inicializarVariaveis()
+    {
+        peso = intent.getDoubleExtra(PESO, 0.00)
+        altura = intent.getIntExtra(ALTURA, 0)
+        classificacao = intent.getStringExtra(CLASSIFICACAO).toString()
+    }
 
-        val altura_aux = altura / 100
-        val res = peso / (altura_aux * altura_aux)
+    private fun popularTela() {
+
+
         val df = DecimalFormat("##.##")
-        var classificacao_aux = ""
-        var cor = getColor(R.color.imc0)
-        var valor_imc = ""
 
+        val res = calculaIMC().toDouble()
+
+        if (classificacao == "A"){
+            calcularIMCAdulto(res)
+        }
+        else
+        {
+            calcularIMCIdoso(res)
+        }
+
+        binding.tvIMC.text = df.format(res).toString()
+        binding.tvIMC.visibility = View.VISIBLE
+
+        binding.tvResIMC.text = valor_imc
+        binding.txtResClassificacao.text = classificacao_aux
+        binding.tvResIMC.setBackgroundColor(cor)
+
+        binding.tvResIMC.visibility = View.VISIBLE
+        binding.txtResClassificacao.visibility  = View.VISIBLE
+    }
+
+    private fun calculaIMC(): Double {
+
+
+        val altura_aux = altura.toDouble() / 100
+
+        return peso / (altura_aux * altura_aux)
+    }
+
+    private fun calcularIMCAdulto(res: Double) {
         if (res <= 18.5 )
         {
             cor = getColor(R.color.imc0)
@@ -74,19 +112,27 @@ class Resultado : AppCompatActivity() {
             cor = getColor(R.color.imc0)
             classificacao_aux = "Não foi possivel obter"
         }
+    }
 
-        binding.tvIMC.text = df.format(res).toString()
-        binding.tvIMC.visibility = View.VISIBLE
+    private fun calcularIMCIdoso(res: Double) {
 
-        binding.tvResIMC.text = valor_imc
-        binding.txtResClassificacao.text = classificacao_aux
-        binding.tvResIMC.setBackgroundColor(cor)
-
-        binding.tvResIMC.visibility = View.VISIBLE
-        binding.txtResClassificacao.visibility  = View.VISIBLE
-
-
-
-
+        if (res <= 22 )
+        {
+            cor = getColor(R.color.imc0)
+            classificacao_aux = "Baixo peso"
+            valor_imc = "< 22"
+        }
+        else if (res in 22.0..27.0)
+        {
+            cor = getColor(R.color.imc1)
+            classificacao_aux = "Adequado ou eutrófico"
+            valor_imc = "> 22 e < 27"
+        }
+        else
+        {
+            cor = getColor(R.color.imc2)
+            classificacao_aux = "Sobrepeso"
+            valor_imc = "> 27"
+        }
     }
 }

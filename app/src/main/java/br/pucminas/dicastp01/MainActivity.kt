@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
 
             val intent = Intent(this, Resultado::class.java).apply {
                 putExtra(PESO, strPeso.toDouble())
-                putExtra(ALTURA, strAltura.toDouble())
+                putExtra(ALTURA, strAltura.toInt())
                 putExtra(CLASSIFICACAO, strClassificacao)
             }
             startActivity(intent)

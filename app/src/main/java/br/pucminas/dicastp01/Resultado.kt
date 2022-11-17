@@ -71,68 +71,59 @@ class Resultado : AppCompatActivity() {
     }
 
     private fun calcularIMCAdulto(res: Double) {
-        if (res <= 18.5 )
-        {
-            cor = getColor(R.color.imc0)
-            classificacao_aux = "Baixo peso"
-            valor_imc = "<18,5"
-        }
-        else if (res in 18.5..24.9)
-        {
-            cor = getColor(R.color.imc1)
-            classificacao_aux = "Peso normal"
-            valor_imc = "18,5 a 24,9"
-        }
-        else if (res in 25.0..29.9)
-        {
-            cor = getColor(R.color.imc2)
-            classificacao_aux = "Excesso de peso"
-            valor_imc = "25,0 a 29,9"
-        }
-        else if (res in 30.0..34.9)
-        {
-            cor = getColor(R.color.imc3)
-            classificacao_aux = "Obesidade de Classe 1"
-            valor_imc = "30,0 a 34,9"
-        }
-        else if (res in 35.0..39.9)
-        {
-            cor = getColor(R.color.imc4)
-            classificacao_aux = "Obesidade de Classe 2"
-            valor_imc = "35,0 a 39,9"
-        }
-        else if (res > 40.0)
-        {
-            cor = getColor(R.color.imc5)
-            classificacao_aux = "Obesidade de Classe 3"
-            valor_imc = ">40,0"
-        }
-        else
-        {
-            cor = getColor(R.color.imc0)
-            classificacao_aux = "Não foi possivel obter"
+
+        when (res) {
+            in 0.0..18.5 -> {
+                cor = getColor(R.color.imc0)
+                classificacao_aux = getString(R.string.baixo_peso)
+                valor_imc = getString(R.string.imc0)
+            }
+            in 18.5..24.99 -> {
+                cor = getColor(R.color.imc1)
+                classificacao_aux = getString(R.string.peso_normal)
+                valor_imc = getString(R.string.imc1)
+            }
+            in 25.0..29.99 -> {
+                cor = getColor(R.color.imc2)
+                classificacao_aux = getString(R.string.excesso_peso)
+                valor_imc = getString(R.string.imcA2)
+            }
+            in 30.0..34.99 -> {
+                cor = getColor(R.color.imc3)
+                classificacao_aux = getString(R.string.obesidade_classe_1)
+                valor_imc = getString(R.string.imcA3)
+            }
+            in 35.0..39.9 -> {
+                cor = getColor(R.color.imc4)
+                classificacao_aux = getString(R.string.obesidade_classe_2)
+                valor_imc = getString(R.string.imcA4)
+            }
+            else -> {
+                cor = getColor(R.color.imc5)
+                classificacao_aux = getString(R.string.obesidade_classe_3)
+                valor_imc = getString(R.string.imcA5)
+            }
         }
     }
 
     private fun calcularIMCIdoso(res: Double) {
 
-        if (res <= 22 )
-        {
-            cor = getColor(R.color.imc0)
-            classificacao_aux = "Baixo peso"
-            valor_imc = "< 22"
-        }
-        else if (res in 22.0..27.0)
-        {
-            cor = getColor(R.color.imc1)
-            classificacao_aux = "Adequado ou eutrófico"
-            valor_imc = "> 22 e < 27"
-        }
-        else
-        {
-            cor = getColor(R.color.imc2)
-            classificacao_aux = "Sobrepeso"
-            valor_imc = "> 27"
+        when (res) {
+            in 0.0..21.99 -> {
+                cor = getColor(R.color.imc0)
+                classificacao_aux = getString(R.string.baixo_peso)
+                valor_imc = getString(R.string.imcI0)
+            }
+            in 22.0..27.0 -> {
+                cor = getColor(R.color.imc1)
+                classificacao_aux = getString(R.string.adequado_ou_eutrofico)
+                valor_imc = getString(R.string.imcI1)
+            }
+            else -> {
+                cor = getColor(R.color.imc2)
+                classificacao_aux = getString(R.string.sobrepeso)
+                valor_imc = getString(R.string.imcI2)
+            }
         }
     }
 }

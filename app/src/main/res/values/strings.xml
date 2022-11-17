@@ -9,4 +9,21 @@
     <string name="classificacao">CLASSIFICAÇÂO</string>
     <string name="ndice_de_massa_corporal">ÍNDICE DE MASSA CORPORAL</string>
     <string name="resultado">Resultado</string>
+    <string name="baixo_peso">Baixo peso</string>
+    <string name="peso_normal">Peso normal</string>
+    <string name="excesso_peso">Excesso de peso</string>
+    <string name="obesidade_classe_1">Obesidade de Classe 1</string>
+    <string name="obesidade_classe_2">Obesidade de Classe 2</string>
+    <string name="obesidade_classe_3">Obesidade de Classe 3</string>
+    <string name="adequado_ou_eutrofico">Adequado ou eutrófico</string>
+    <string name="sobrepeso">Sobrepeso</string>
+    <string name="imc0"><![CDATA[<18,5]]></string>
+    <string name="imc1">18,5 a 24,99</string>
+    <string name="imcA2">25,0 a 29,99</string>
+    <string name="imcA3">30,0 a 34,99</string>
+    <string name="imcA4">35,0 a 39,99</string>
+    <string name="imcA5"><![CDATA[>40,0]]></string>
+    <string name="imcI0"><![CDATA[< 22]]></string>
+    <string name="imcI1"><![CDATA[> 22 e < 27]]></string>
+    <string name="imcI2"><![CDATA[> 27]]></string>
 </resources>
